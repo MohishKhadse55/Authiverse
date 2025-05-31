@@ -1,0 +1,8 @@
+spring:
+  security:
+    saml2:
+      relyingparty:
+        registration:
+          entra-id: 
+            assertingparty:
+              metadata-uri: https://login.microsoftonline.com/ba01a30e-0cae-4734-819a-6edf870bc6f3/federationmetadata/2007-06/federationmetadata.xml?appid=6b8fc093-564c-4c8c-a06e-6a6e9949f0ef
