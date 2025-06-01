@@ -6,3 +6,21 @@ spring:
           entra-id: 
             assertingparty:
               metadata-uri: https://login.microsoftonline.com/ba01a30e-0cae-4734-819a-6edf870bc6f3/federationmetadata/2007-06/federationmetadata.xml?appid=6b8fc093-564c-4c8c-a06e-6a6e9949f0ef
+    oauth2:
+      client:
+        registration:
+          salesforce:
+            client-id: 3MVG9GCMQoQ6rpzRK4JAUtNCaJGseBxOetLQOoDWDU5zuOmEQN1T4fGugbj8QVSyNhpdsyG2dzqWvWyiKYmtm
+            client-secret: AA5B62D6C450F5A2E2338433F078F3B676E85822706845AFBA8B5742A59BDADA
+            scope: openid, profile, email
+            redirect-uri: "http://localhost:8080/login/oauth2/code/salesforce"
+            authorization-grant-type: authorization_code
+            user-name-attribute: email 
+        provider:
+          salesforce:
+            authorization-uri: https://55com6-dev-ed.develop.my.salesforce.com/services/oauth2/authorize
+            token-uri: https://55com6-dev-ed.develop.my.salesforce.com/services/oauth2/token
+            user-info-uri: https://55com6-dev-ed.develop.my.salesforce.com/services/oauth2/userinfo
+            jwk-set-uri: https://55com6-dev-ed.develop.my.salesforce.com/id/keys
+
+            

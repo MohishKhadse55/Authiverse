@@ -19,6 +19,10 @@ repositories {
 }
 
 dependencies {
+ implementation("io.r2dbc:r2dbc-spi:1.0.0.RELEASE")
+ implementation 'org.springframework.boot:spring-boot-starter-rsocket'
+
+
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -26,6 +30,9 @@ dependencies {
 
     // SAML2 Service Provider
     implementation 'org.springframework.security:spring-security-saml2-service-provider:6.5.0'
+
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
 
     // Explicit OpenSAML dependencies matching Spring Security SAML2 version requirements
     implementation 'org.opensaml:opensaml-core:4.3.2'

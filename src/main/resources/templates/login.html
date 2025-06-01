@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Login</title>
+</head>
+
+<body>
+    <h1>Login Options</h1>
+    <ul>
+        <li><a th:href="@{/saml2/authenticate/entra-id}">Login with SAML (Entra ID)</a></li>
+        <li><a th:href="@{/oauth2/authorization/salesforce}">Login with Google (OIDC)</a></li>
+    </ul>
+</body>
+
+</html>
