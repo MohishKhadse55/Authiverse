@@ -6,10 +6,16 @@
 </head>
 
 <body>
-    <h1>Login Options</h1>
+    <form th:action="@{/login}" method="post">
+        <label>Username: <input type="text" name="username" /></label><br />
+        <label>Password: <input type="password" name="password" /></label><br />
+        <button type="submit">Login with LDAP</button>
+    </form>
+
+    <h2>Other Login Methods</h2>
     <ul>
-        <li><a th:href="@{/saml2/authenticate/entra-id}">Login with SAML (Entra ID)</a></li>
-        <li><a th:href="@{/oauth2/authorization/salesforce}">Login with Google (OIDC)</a></li>
+        <li><a th:href="@{/saml2/authenticate/entra-id}">Login with SAML</a></li>
+        <li><a th:href="@{/oauth2/authorization/salesforce}">Login with OIDC</a></li>
     </ul>
 </body>
 

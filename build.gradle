@@ -42,6 +42,8 @@ dependencies {
     implementation 'org.opensaml:opensaml-security-impl:4.3.2'
     implementation 'org.opensaml:opensaml-xmlsec-api:4.3.2'
     implementation 'org.opensaml:opensaml-xmlsec-impl:4.3.2'
+    implementation 'org.springframework.ldap:spring-ldap-core'
+    implementation 'org.springframework.security:spring-security-ldap'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
