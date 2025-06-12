@@ -1,25 +1,14 @@
 package com.example.demo;
 
-import java.util.Collections;
-
-import org.springframework.boot.autoconfigure.couchbase.CouchbaseProperties.Authentication;
-import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
-import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.ldap.core.support.LdapContextSource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.ldap.authentication.LdapAuthenticationProvider;
 import org.springframework.security.ldap.authentication.BindAuthenticator;
-import org.springframework.security.ldap.userdetails.DefaultLdapAuthoritiesPopulator;
-import org.springframework.ldap.core.support.LdapContextSource;
-
-import jakarta.servlet.ServletContext;
-import jakarta.servlet.ServletException;
-
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.ldap.authentication.LdapAuthenticationProvider;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
@@ -52,21 +41,22 @@ public class SecurityConfig {
         @Bean
         public LdapAuthenticationProvider ldapProvider() {
                 BindAuthenticator authenticator = new BindAuthenticator(contextSource());
-                authenticator.setUserDnPatterns(new String[] { "cn={0},dc=maxcrc,dc=com" }); // adjust as needed
+                authenticator.setUserDnPatterns(new String[] { "cn={0}" }); // adjust as needed
 
-                DefaultLdapAuthoritiesPopulator authoritiesPopulator = new DefaultLdapAuthoritiesPopulator(
-                                contextSource(), "ou=groups");
-                authoritiesPopulator.setIgnorePartialResultException(true);
+                // DefaultLdapAuthoritiesPopulator authoritiesPopulator = new
+                // DefaultLdapAuthoritiesPopulator(
+                // contextSource(), "ou=groups");
+                // authoritiesPopulator.setIgnorePartialResultException(true);
 
-                return new LdapAuthenticationProvider(authenticator, authoritiesPopulator);
+                return new LdapAuthenticationProvider(authenticator);
         }
 
         @Bean
         public LdapContextSource contextSource() {
                 LdapContextSource contextSource = new LdapContextSource();
-                contextSource.setUrl("ldap://localhost:389");
-                contextSource.setBase("dc=maxcrc,dc=com");
-                contextSource.setUserDn("cn=Manager,dc=maxcrc,dc=com");
+                contextSource.setUrl("ldap://9.46.245.207:15389");
+                contextSource.setBase("dc=company,dc=com");
+                contextSource.setUserDn("cn=root");
                 contextSource.setPassword("password@123");
                 return contextSource;
         }
